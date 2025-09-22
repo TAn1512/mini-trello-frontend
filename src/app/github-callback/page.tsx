@@ -26,7 +26,7 @@ export default function GithubCallback() {
                 localStorage.setItem("token", res.data.accessToken);
 
                 const user = {
-                    email: res.data.username,
+                    email: res.data.email,
                     accessToken: res.data.accessToken,
                 };
 

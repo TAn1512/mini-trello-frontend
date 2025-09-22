@@ -16,12 +16,37 @@ export function middleware(req: NextRequest) {
         }
     }
 
+    if (pathname === "/") {
+        if (!user) {
+            return NextResponse.redirect(new URL("/signin", req.url));
+        } else {
+            return NextResponse.redirect(new URL("/boards", req.url));
+        }
+    }
+
     if (!user && !publicPaths.some((p) => pathname.startsWith(p))) {
         return NextResponse.redirect(new URL("/signin", req.url));
     }
 
     if (user && publicPaths.some((p) => pathname.startsWith(p))) {
         return NextResponse.redirect(new URL("/boards", req.url));
+    }
+
+    const validPaths = [
+        "/signin",
+        "/signup",
+        "/verify",
+        "/github-callback",
+        "/boards",
+    ];
+
+    const isValidPath = validPaths.some((p) => pathname.startsWith(p));
+    if (!isValidPath) {
+        if (user) {
+            return NextResponse.redirect(new URL("/boards", req.url));
+        } else {
+            return NextResponse.redirect(new URL("/signin", req.url));
+        }
     }
 
     return NextResponse.next();
