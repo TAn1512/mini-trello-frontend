@@ -44,7 +44,7 @@ export default function AuthForm({ type }: Props) {
         <div className="flex h-screen items-center justify-center bg-gray-50">
             <div className="w-full max-w-md rounded-xl bg-white shadow-lg p-8 text-center">
                 <div className="flex justify-center mb-4">
-                    <span className="text-red-600 text-4xl font-bold">S</span>
+                    <span className="text-red-600 text-4xl font-bold">MT</span>
                 </div>
                 <h2 className="text-gray-700 mb-6">
                     {type === "signin" ? "Log in to continue" : "Create your account"}
