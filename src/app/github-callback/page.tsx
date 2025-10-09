@@ -16,7 +16,7 @@ export default function GithubCallback() {
 
     useEffect(() => {
         const code = params.get("code");
-        console.log("GitHub code:", code);
+        // console.log("GitHub code:", code);
 
         if (!code) return;
 

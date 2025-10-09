@@ -77,7 +77,7 @@ export default function CardItem({ boardId, card }: CardItemProps) {
     return (
         <div
             ref={divRef}
-            className="bg-gray-900 rounded-lg p-3 shadow w-64 sm:w-72 lg:w-64 flex-shrink-0">
+            className="bg-gray-900 rounded-lg p-3 shadow w-64 sm:w-72 lg:w-64 flex-shrink-0 h-auto">
 
             {updatingTask && (
                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center rounded-lg z-10">
@@ -126,8 +126,8 @@ export default function CardItem({ boardId, card }: CardItemProps) {
                             <MoreVertical className="w-5 h-5 text-gray-400" />
                         </Menu.Button>
                         <Menu.Items className="absolute right-0 mt-2 w-32 origin-top-right bg-gray-800 border border-gray-700 rounded-md shadow-lg focus:outline-none z-20">
-                            <div className="py-1">
-                                <Menu.Item>
+                            <div className="">
+                                {/* <Menu.Item>
                                     {({ active }) => (
                                         <button
                                             onClick={() => setEditing(true)}
@@ -136,7 +136,7 @@ export default function CardItem({ boardId, card }: CardItemProps) {
                                             Update
                                         </button>
                                     )}
-                                </Menu.Item>
+                                </Menu.Item> */}
                                 <Menu.Item>
                                     {({ active }) => (
                                         <button

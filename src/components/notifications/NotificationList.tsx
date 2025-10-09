@@ -34,12 +34,12 @@ export default function NotificationList() {
         );
 
         socket.on("connect", () => {
-            console.log("✅ Connected:", socket.id);
+            // console.log("✅ Connected:", socket.id);
             socket.emit("register", currentUser.email);
         });
 
         socket.on("notification", (notification: Notification) => {
-            console.log("📩 New notification:", notification);
+            // console.log("📩 New notification:", notification);
             setNotifications((prev) => [notification, ...prev]);
         });
 

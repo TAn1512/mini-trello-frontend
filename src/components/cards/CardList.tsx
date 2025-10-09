@@ -2,7 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { getCardsApi } from "@/services/cards";
-import { CardTitle } from "@/types/card";
+import { Card, CardTitle } from "@/types/card";
 import CardItem from "./CardItem";
 import CardCreateForm from "./CardCreateForm";
 
@@ -42,7 +42,7 @@ export default function CardList({ boardId }: CardListProps) {
         (a, b) => ORDER.indexOf(a.title) - ORDER.indexOf(b.title)
     );
 
-    const existingTitles = cards.map((c: any) => c.title as CardTitle);
+    const existingTitles = cards.map((c: Card) => c.title as CardTitle);
     const allPossibleTitles = Object.values(CardTitle);
     const availableTitles = allPossibleTitles.filter(
         (t) => !existingTitles.includes(t)
@@ -50,7 +50,7 @@ export default function CardList({ boardId }: CardListProps) {
 
     return (
         <div className=" bg-white">
-            <div className="hidden md:flex flex-wrap gap-4 p-4 h-full">
+            <div className="hidden md:flex flex-wrap gap-4 p-4 items-start">
                 {sortedCards.map((card: any) => (
                     <CardItem boardId={boardId} key={card.id} card={card} />
                 ))}

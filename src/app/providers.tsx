@@ -34,7 +34,6 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         <ReduxProvider store={store}>
             <QueryClientProvider client={queryClient}>
                 <DndProvider backend={HTML5Backend}>
-
                     <HydrateUser />
                     {children}
                 </DndProvider>

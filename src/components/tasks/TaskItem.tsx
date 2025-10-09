@@ -35,14 +35,15 @@ export default function TaskItem({ boardId, cardId, task }: TaskItemProps) {
                 className={`bg-gray-700 text-white text-sm p-2 rounded cursor-pointer hover:bg-gray-600 ${isDragging ? "opacity-50" : ""
                     }`}
             >
-                <span className="truncate">{task.title}</span>
+                <span className="truncate tracking-tight block w-full">
+                    {task.title}
+                </span>
             </div>
 
             {open && <TaskDetailModal
                 task={task}
                 boardId={boardId}
                 onClose={() => {
-                    console.log("Gọi onClose, open hiện tại:", open);
                     setOpen(false);
                 }}
             />}

@@ -40,7 +40,7 @@ export default function InviteMemberModal({ boardId, onClose }: InviteMemberModa
                 <h2 className="text-lg font-bold mb-4">Invite Member</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <input
-                        type="email"
+                        type="text"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter member email"
