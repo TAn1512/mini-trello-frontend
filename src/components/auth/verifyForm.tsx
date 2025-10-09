@@ -1,14 +1,14 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { verifyApi } from "@/services/auth";
 import { useDispatch } from "react-redux";
 import { setUser } from "@/store/userSlice";
 import Cookies from "js-cookie";
 
-export default function VerifyForm() {
+function VerifyFormInner() {
     const router = useRouter();
     const params = useSearchParams();
     const type = (params.get("type") as "signin" | "signup") || "signup";
@@ -83,5 +83,13 @@ export default function VerifyForm() {
                 </p>
             </div>
         </div>
+    );
+}
+
+export default function VerifyForm() {
+    return (
+        <Suspense fallback={<p className="text-center mt-10">Loading verification form...</p>}>
+            <VerifyFormInner />
+        </Suspense>
     );
 }

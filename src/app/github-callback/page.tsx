@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { githubLoginApi } from "@/services/auth";
 import Cookies from "js-cookie";
@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { setUser } from "@/store/userSlice";
 
 
-export default function GithubCallback() {
+function GithubCallbackInner() {
     const router = useRouter();
     const params = useSearchParams();
     const dispatch = useDispatch();
@@ -16,7 +16,6 @@ export default function GithubCallback() {
 
     useEffect(() => {
         const code = params.get("code");
-        // console.log("GitHub code:", code);
 
         if (!code) return;
 
@@ -43,4 +42,12 @@ export default function GithubCallback() {
     }, [params, router]);
 
     return <p className="text-center mt-10">Signing in with GitHub...</p>;
+}
+
+export default function GithubCallback() {
+    return (
+        <Suspense fallback={<p className="text-center mt-10">Loading...</p>}>
+            <GithubCallbackInner />
+        </Suspense>
+    );
 }
