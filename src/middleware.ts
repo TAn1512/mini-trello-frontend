@@ -5,7 +5,7 @@ export function middleware(req: NextRequest) {
     const userCookie = req.cookies.get("user")?.value;
     const { pathname } = req.nextUrl;
 
-    const publicPaths = ["/signin", "/signup", "/verify", "/github-callback"];
+    const publicPaths = ["/signin", "/signup", "/verify", "/github-callback", "/google-callback"];
 
     let user: { email: string; accessToken: string } | null = null;
     if (userCookie) {
@@ -38,6 +38,7 @@ export function middleware(req: NextRequest) {
         "/verify",
         "/github-callback",
         "/boards",
+        "/google-callback",
     ];
 
     const isValidPath = validPaths.some((p) => pathname.startsWith(p));

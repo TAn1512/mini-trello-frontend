@@ -18,7 +18,7 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         setUser: (state, action: PayloadAction<User>) => {
-            console.log("Hydrating Redux with user:", action.payload);
+            // console.log("Hydrating Redux with user:", action.payload);
 
             state.currentUser = action.payload;
         },

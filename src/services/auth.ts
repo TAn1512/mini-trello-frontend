@@ -73,3 +73,19 @@ export async function githubLoginApi(code: string): Promise<ApiResponse> {
 
     return { ok: true, data };
 }
+
+export async function googleLoginApi(code: string): Promise<ApiResponse> {
+    const res = await fetch(`${API_URL}/auth/google`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+        return { ok: false, message: data.message || "Google login failed" };
+    }
+
+    return { ok: true, data };
+}

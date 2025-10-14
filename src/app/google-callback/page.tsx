@@ -6,15 +6,15 @@ import { useMutation } from "@tanstack/react-query";
 import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
 import { setUser } from "@/store/userSlice";
-import { githubLoginApi } from "@/services/auth";
+import { googleLoginApi } from "@/services/auth";
 
-function GithubCallbackInner() {
+function GoogleCallbackInner() {
     const router = useRouter();
     const params = useSearchParams();
     const dispatch = useDispatch();
 
     const mutation = useMutation({
-        mutationFn: githubLoginApi,
+        mutationFn: googleLoginApi,
         onSuccess: (res) => {
             if (res.ok && res.data?.accessToken) {
                 localStorage.setItem("token", res.data.accessToken);
@@ -26,7 +26,7 @@ function GithubCallbackInner() {
                 dispatch(setUser(user));
                 router.push("/boards");
             } else {
-                alert(res.message || "GitHub login failed");
+                alert(res.message || "Google login failed");
                 router.push("/signin");
             }
         },
@@ -45,7 +45,7 @@ function GithubCallbackInner() {
         <div className="flex h-screen items-center justify-center">
             <p className="text-gray-700 text-lg">
                 {mutation.isPending
-                    ? "Signing in with GitHub..."
+                    ? "Signing in with Google..."
                     : mutation.isError
                         ? "Something went wrong."
                         : "Redirecting..."}
@@ -54,10 +54,10 @@ function GithubCallbackInner() {
     );
 }
 
-export default function GithubCallback() {
+export default function GoogleCallback() {
     return (
         <Suspense fallback={<p className="text-center mt-10">Loading...</p>}>
-            <GithubCallbackInner />
+            <GoogleCallbackInner />
         </Suspense>
     );
 }

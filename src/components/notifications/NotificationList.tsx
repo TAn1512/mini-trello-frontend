@@ -19,7 +19,7 @@ export default function NotificationList() {
         getNotificationsApi(currentUser.email).then((res) => {
             if (res.ok && res.data) {
                 setNotifications(res.data);
-                console.log("📨 Fetched notifications:", res.data);
+                // console.log("📨 Fetched notifications:", res.data);
 
             }
         });

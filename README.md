@@ -63,7 +63,7 @@ npm install
 Create `.env` file like this:
 
 ```
-NEXT_PUBLIC_API_URL=http://localhost:8080
+NEXT_PUBLIC_API_URL=
 NEXT_PUBLIC_GITHUB_CLIENT_ID=
 ```
 
