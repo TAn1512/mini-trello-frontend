@@ -2,7 +2,7 @@
 
 This is the **frontend application** for Mini Trello, built with **Next.js (App Router, TypeScript)**.  
 It provides the web UI for authentication, boards, cards, notifications, and tasks — connecting to the NestJS backend.
-
+You can try this application in: https://mini-trello-annt.vercel.app
 ---
 
 ## 📂 Project Structure
@@ -65,6 +65,7 @@ Create `.env` file like this:
 ```
 NEXT_PUBLIC_API_URL=
 NEXT_PUBLIC_GITHUB_CLIENT_ID=
+NEXT_PUBLIC_GOOGLE_CLIENT_ID=
 ```
 
 ### 3. Run development server
